@@ -7,6 +7,7 @@ from collections.abc import Iterable
 from pathlib import Path
 from typing import TextIO, TypedDict, Literal
 import re
+from itertools import groupby
 import json
 
 
@@ -43,6 +44,7 @@ class WordForm(TypedDict):
     part_of_speech: PartOfSpeech
     word: str
     frequency: float
+    lemma_frequency: float
     range: float
     dispersion: float
     is_root_form: bool
@@ -84,6 +86,7 @@ def parse(lines: Iterable[str]) -> list[WordForm]:
             "part_of_speech": pos_names.get(pos, "tagging_error"),
             "word": word,
             "frequency": float(freq),
+            "lemma_frequency": 0.0,  # Filled in later
             "range": float(rng),
             "dispersion": float(disp),
             "is_root_form": is_root == "1",
@@ -96,6 +99,7 @@ def parse(lines: Iterable[str]) -> list[WordForm]:
             if not line:
                 continue
             lemma, pos, word, freq, ra, disp, isroot = line.split()
+
             rows.append(parse_line(lemma, pos, word, freq, ra, disp, isroot))
         except Exception as e:
             print(f"Failed to parse line: {raw}\nError:{e}", file=sys.stderr)
@@ -120,9 +124,17 @@ def parse_arguments(argv: list[str]) -> argparse.Namespace:
 LETTERS = re.compile("^[a-zA-Z]+$")
 
 
-def transform(rows: list[WordForm]) -> list[WordForm]:
+def transform(
+    rows: list[WordForm],
+    lemma_frequencies: dict[tuple[str, str], float],
+) -> list[WordForm]:
     out = []
     for r in rows:
+        r["lemma_frequency"] = lemma_frequencies[(r["lemma"], r["part_of_speech"])]
+        assert r["lemma_frequency"] >= r["frequency"], (
+            f"{r['lemma_frequency']} >= {r['frequency']}"
+        )
+
         if not re.match(LETTERS, r["word"]):
             continue
 
@@ -139,8 +151,11 @@ def transform(rows: list[WordForm]) -> list[WordForm]:
 
         # Data source only has integer usage-per-million, so exclude anything
         # that they rounded to zero.
-        if r["frequency"] < 1.0:
+        if r["lemma_frequency"] < 1.0:
             continue
+
+        # if r["frequency"] < 1.0:
+        #     continue
 
         # Exclude words used a lot but not by many sources. 3.0 excludes things
         # like muon and antiracist which seems valid.
@@ -157,7 +172,12 @@ def main(argv: list[str]) -> int:
     args = parse_arguments(argv)
     rows = parse(sys.stdin)
 
-    rows = transform(rows)
+    lemma_aggregate = groupby(rows, lambda r: (r["lemma"], r["part_of_speech"]))
+    lemma_frequencies = {
+        k: sum(r["frequency"] for r in rows) for k, rows in lemma_aggregate
+    }
+
+    rows = transform(rows, lemma_frequencies)
 
     try:
         dump(rows, sys.stdout)
