@@ -1,0 +1,47 @@
+{
+  "model": "opus[1m]",
+  "env": {
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "true"
+  },
+  "permissions": {
+ 
+    "deny": [
+      "Bash(just *)",
+      "Bash(kubectl:*)",
+      "Bash(kubectl-argo-rollouts)",
+      "Bash(gcloud:*)",
+      "Bash(ssh:*)",
+      "Bash(make *prod*)",
+      "Bash(gh pr merge *)",
+      "Bash(gh api graphql *mutation*)",
+      "Bash(gh api *pulls/*/merge*)",
+      "Edit(claude_plugins/stable/plugins/skills/wave-plugins/scripts/*)",
+      "Edit(tools/wavecli/wavecli/infra/kube_ro.py)",
+      "mcp__github__enable_pr_auto_merge",
+      "mcp__github__merge_pull_request",
+      "Read(~/.config/gcloud/*)",
+      "Bash(gh auth token:*)",
+      "Read(~/.ssh/*)",
+      "Read(~/.aws/*)",
+      "Read(~/.kube/*)",
+      "Read(~/.vault-token)",
+      "Read(~/.wave/secrets/*)",
+      "Read(~/Library/Application Support/Google/Chrome*)",
+      "Read(~/Library/Application Support/Chromium*)",
+      "Read(~/Library/Application Support/Firefox*)",
+      "Read(~/Library/Application Support/Mozilla*)",
+      "Read(~/Library/Application Support/Microsoft Edge*)",
+      "Read(~/Library/Application Support/BraveSoftware*)",
+      "Read(~/Library/Application Support/Arc*)",
+      "Read(~/Library/Application Support/Vivaldi*)",
+      "Read(~/Library/Application Support/com.operasoftware.Opera*)",
+      "Read(~/snap/firefox/*)",
+      "Read(~/snap/chromium/*)",
+      "Read(~/.mozilla/*)",
+      "Read(~/.config/chromium/*)"
+    ]
+  },
+  "hooks": {
+  },
+  "enableAllProjectMcpServers": false
+}
