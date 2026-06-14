@@ -1,4 +1,5 @@
-import { type Codec, gameCodec, type SavedGame } from './codecs.ts';
+import { type Codec, gameCodec, playerCodec, type SavedGame } from './codecs.ts';
+import type { Player } from '../logic/player.ts';
 
 export { storage };
 export type { SavedGame };
@@ -10,12 +11,16 @@ const VERSION = 1;
 
 const KEYS = {
   game: 'wordgame:current-game',
+  player: 'wordgame:player',
 };
 
 const storage = {
   loadGame: (): SavedGame | null => read(KEYS.game, gameCodec),
   saveGame: (game: SavedGame): void => write(KEYS.game, gameCodec, game),
   clearGame: (): void => remove(KEYS.game),
+  loadPlayer: (): Player | null => read(KEYS.player, playerCodec),
+  savePlayer: (player: Player): void => write(KEYS.player, playerCodec, player),
+  clearPlayer: (): void => remove(KEYS.player),
 };
 
 type Envelope = { version: number; data: unknown };

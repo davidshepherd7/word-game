@@ -5,6 +5,7 @@ export { WinCondition, WordCountWin, LongWordWin, randomWinCondition };
 abstract class WinCondition {
   abstract hasWon(foundWords: readonly FoundWord[]): boolean;
   abstract renderStatus(foundWords: readonly FoundWord[]): string;
+  abstract expAwarded(): number;
 }
 
 class WordCountWin extends WinCondition {
@@ -21,6 +22,11 @@ class WordCountWin extends WinCondition {
 
   renderStatus(foundWords: readonly FoundWord[]): string {
     return `${Math.min(foundWords.length, this.target)}/${this.target} words`;
+  }
+
+  expAwarded(): number {
+    // More complex function of target, slow exponential?
+    return 10;
   }
 }
 
@@ -39,6 +45,11 @@ class LongWordWin extends WinCondition {
   renderStatus(foundWords: readonly FoundWord[]): string {
     const longest = foundWords.reduce((max, word) => Math.max(max, word.letters.length), 0);
     return `longest ${longest}/${this.minLength} letters`;
+  }
+
+  expAwarded(): number {
+    // More complex function of target, fast exponential?
+    return 10;
   }
 }
 

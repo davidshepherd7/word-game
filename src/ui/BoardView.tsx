@@ -21,11 +21,9 @@ function nextPath(path: BoardLocation[], col: number, row: number): BoardLocatio
 export function BoardView({
   board,
   onWord,
-  disabled = false,
 }: {
   board: Board;
   onWord?: (letters: readonly Letter[]) => void;
-  disabled?: boolean;
 }) {
   // Fraction of a tile's width, measured from its centre, within which a drag
   // registers that tile. Smaller means you must drag nearer the centre.
@@ -91,12 +89,7 @@ export function BoardView({
       <div className="current-word" aria-live="polite">
         {word}
       </div>
-      <div
-        className="board"
-        role="grid"
-        aria-disabled={disabled}
-        onContextMenu={(event) => event.preventDefault()}
-      >
+      <div className="board" role="grid" onContextMenu={(event) => event.preventDefault()}>
         {board.grid.map((cells, row) => (
           <div className="board-row" role="row" key={row}>
             {cells.map((letter, col) => (
@@ -111,7 +104,6 @@ export function BoardView({
                   else cellRefs.current.delete(key);
                 }}
                 onPointerDown={(event) => {
-                  if (disabled) return;
                   if (event.button !== 0) return;
                   // Touch implicitly captures the pointer to this cell, which
                   // would send every later pointermove here instead of to the

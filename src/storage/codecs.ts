@@ -1,8 +1,9 @@
 import { Board, Letter } from '../logic/board.ts';
+import { Player } from '../logic/player.ts';
 import { LongWordWin, WinCondition, WordCountWin } from '../logic/win-condition.ts';
 import { FoundWord, isWord } from '../logic/word-checker.ts';
 
-export { gameCodec };
+export { gameCodec, playerCodec };
 export type { Codec, SavedGame };
 
 // A pair of pure functions between a domain value and its JSON-safe wire form.
@@ -36,6 +37,16 @@ const gameCodec: Codec<SavedGame> = {
       .map((letters) => isWord(letters.map((alpha) => new Letter(alpha))))
       .filter((word): word is FoundWord => word !== null);
     return { board, words: found, winCondition };
+  },
+};
+
+// Only experience is stored; the level is derived from it on load.
+const playerCodec: Codec<Player> = {
+  encode: (player) => ({ experience: player.experience }),
+  decode: (raw) => {
+    const dto = asRecord(raw);
+    if (typeof dto.experience !== 'number') throw new Error('expected experience');
+    return new Player(dto.experience);
   },
 };
 
