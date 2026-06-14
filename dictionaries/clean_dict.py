@@ -43,7 +43,7 @@ PartOfSpeech = Literal[
 class WordForm(TypedDict):
     lemma: str
     part_of_speech: PartOfSpeech
-    word: str
+    word_form: str
     frequency: float
     lemma_frequency: float
     range: float
