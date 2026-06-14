@@ -2,7 +2,6 @@
 # TODO
 
 * Q always comes with u attached
-* Better word list - remove 2 letter, add word frequencies and filter by that
 
 
 # UI
