@@ -41,13 +41,12 @@ class LongWordWin extends WinCondition {
     return foundWords.some((word) => word.letters.length >= this.minLength);
   }
 
-  renderStatus(foundWords: readonly FoundWord[]): string {
-    const longest = foundWords.reduce((max, word) => Math.max(max, word.letters.length), 0);
-    return `find a word with ${this.minLength} letters (longest ${longest})`;
+  renderStatus(_foundWords: readonly FoundWord[]): string {
+    return `find a ${this.minLength} letter word`;
   }
 
   expAwarded(): number {
-    return 2 ** this.minLength;
+    return 4 ** (this.minLength - 3);
   }
 }
 

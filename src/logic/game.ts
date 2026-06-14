@@ -57,7 +57,6 @@ function generateGame(): Game {
       break;
     }
   }
-  board;
 
   if (!winCondition.hasWon(solution!)) {
     // TODO: make this never happen? Change condition?
