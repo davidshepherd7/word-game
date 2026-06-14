@@ -1317,7 +1317,6 @@ antagonist	common_noun	antagonist	1.0	29.0	0.62	True
 antagonist	common_noun	antagonists	1.0	31.0	0.63	False
 antagonistic	adjective	antagonistic	2.0	62.0	0.86	True
 antarctic	adjective	antarctic	4.0	56.0	0.68	True
-ante	foreign_word	ante	1.0	43.0	0.72	True
 antecedent	adjective	antecedent	1.0	35.0	0.78	True
 antecedent	common_noun	antecedent	2.0	53.0	0.73	True
 antelope	common_noun	antelope	1.0	36.0	0.8	True
@@ -2186,7 +2185,6 @@ autopsy	common_noun	autopsy	1.0	47.0	0.83	True
 autoradiography	common_noun	autoradiography	1.0	8.0	0.54	True
 autumn	common_noun	autumn	39.0	99.0	0.94	True
 autumnal	adjective	autumnal	1.0	39.0	0.84	True
-aux	foreign_word	aux	1.0	44.0	0.85	True
 auxiliary	adjective	auxiliary	2.0	71.0	0.87	True
 auxiliary	common_noun	auxiliaries	1.0	39.0	0.74	False
 auxiliary	common_noun	auxiliary	1.0	46.0	0.79	True
@@ -2195,7 +2193,6 @@ avail	verb	avail	1.0	57.0	0.87	True
 availability	common_noun	availability	19.0	90.0	0.9	True
 available	adjective	available	272.0	100.0	0.93	True
 avalanche	common_noun	avalanche	2.0	69.0	0.87	True
-ave	foreign_word	ave	1.0	27.0	0.61	True
 avenge	verb	avenge	1.0	51.0	0.88	True
 avenging	adjective	avenging	1.0	29.0	0.81	True
 Avenue	common_noun	avenue	16.0	99.0	0.87	True
@@ -2364,7 +2361,6 @@ bail	verb	bailed	1.0	41.0	0.81	False
 bailey	common_noun	bailey	2.0	54.0	0.84	True
 bailiff	common_noun	bailiff	2.0	52.0	0.83	True
 bailiff	common_noun	bailiffs	2.0	46.0	0.8	False
-bain	foreign_word	bain	1.0	41.0	0.79	True
 bairn	common_noun	bairn	1.0	28.0	0.74	True
 bairn	common_noun	bairns	1.0	33.0	0.77	False
 bait	common_noun	bait	5.0	76.0	0.71	True
@@ -2475,7 +2471,6 @@ banner	common_noun	banner	6.0	96.0	0.92	True
 banner	common_noun	banners	3.0	82.0	0.89	False
 banning	common_noun	banning	1.0	46.0	0.8	True
 bannister	common_noun	bannister	1.0	35.0	0.82	True
-banque	foreign_word	banque	1.0	29.0	0.76	True
 banquet	common_noun	banquet	4.0	86.0	0.89	True
 banquet	common_noun	banquets	1.0	43.0	0.84	False
 banqueting	adjective	banqueting	1.0	33.0	0.53	True
@@ -3412,7 +3407,6 @@ bomber	common_noun	bombers	5.0	75.0	0.86	False
 bombing	common_noun	bombing	9.0	88.0	0.86	True
 bombing	common_noun	bombings	2.0	48.0	0.8	False
 bombshell	common_noun	bombshell	1.0	50.0	0.84	True
-bon	foreign_word	bon	2.0	63.0	0.86	True
 bonanza	common_noun	bonanza	3.0	51.0	0.62	True
 bonar	adjective	bonar	1.0	10.0	0.47	True
 bond	common_noun	bond	17.0	97.0	0.81	True
@@ -3821,7 +3815,6 @@ bristle	verb	bristled	1.0	34.0	0.82	False
 bristle	verb	bristling	1.0	52.0	0.88	False
 brit	common_noun	brit	1.0	49.0	0.77	True
 brit	common_noun	brits	2.0	59.0	0.81	False
-britannica	foreign_word	britannica	1.0	27.0	0.77	True
 british	adjective	british	357.0	100.0	0.93	True
 briton	common_noun	briton	2.0	59.0	0.83	True
 briton	common_noun	britons	5.0	75.0	0.83	False
@@ -4464,7 +4457,6 @@ capture	verb	captures	2.0	70.0	0.89	False
 capture	verb	capturing	3.0	83.0	0.91	False
 car	common_noun	car	278.0	100.0	0.93	True
 car	common_noun	cars	75.0	100.0	0.9	False
-cara	foreign_word	cara	1.0	4.0	0.04	True
 caramel	common_noun	caramel	1.0	35.0	0.77	True
 carapace	common_noun	carapace	1.0	22.0	0.61	True
 carat	common_noun	carat	1.0	21.0	0.55	True
@@ -5339,7 +5331,6 @@ cirrhosis	common_noun	cirrhosis	2.0	30.0	0.46	True
 cistercian	adjective	cistercian	1.0	35.0	0.73	True
 cistern	common_noun	cistern	3.0	39.0	0.43	True
 cistern	common_noun	cisterns	1.0	25.0	0.55	False
-cit	foreign_word	cit	1.0	14.0	0.38	True
 citadel	common_noun	citadel	2.0	57.0	0.83	True
 citation	common_noun	citation	5.0	57.0	0.61	True
 citation	common_noun	citations	2.0	33.0	0.41	False
@@ -5967,7 +5958,6 @@ commandment	common_noun	commandment	1.0	38.0	0.78	True
 commandment	common_noun	commandments	1.0	51.0	0.84	False
 commando	common_noun	commando	4.0	52.0	0.56	True
 commando	common_noun	commandos	3.0	40.0	0.52	False
-comme	foreign_word	comme	1.0	31.0	0.79	True
 commemorate	verb	commemorate	3.0	67.0	0.9	True
 commemorate	verb	commemorated	1.0	61.0	0.88	False
 commemorate	verb	commemorates	1.0	42.0	0.83	False
@@ -6072,7 +6062,6 @@ compact	common_noun	compact	3.0	41.0	0.38	True
 compact	common_noun	compacts	1.0	20.0	0.19	False
 compacted	adjective	compacted	1.0	41.0	0.85	True
 compaction	common_noun	compaction	1.0	18.0	0.5	True
-compagnie	foreign_word	compagnie	1.0	17.0	0.47	True
 companion	common_noun	companion	17.0	97.0	0.91	True
 companion	common_noun	companions	8.0	90.0	0.91	False
 companionable	adjective	companionable	1.0	34.0	0.83	True
@@ -7564,7 +7553,6 @@ crown	verb	crown	1.0	51.0	0.87	True
 crown	verb	crowned	5.0	84.0	0.9	False
 crown	verb	crowning	1.0	36.0	0.85	False
 crowning	adjective	crowning	1.0	46.0	0.87	True
-cru	foreign_word	cru	1.0	11.0	0.19	True
 crucial	adjective	crucial	45.0	99.0	0.93	True
 crucially	adverb	crucially	4.0	71.0	0.9	True
 crucible	common_noun	crucible	1.0	43.0	0.8	True
@@ -7936,7 +7924,6 @@ dangle	verb	dangled	1.0	45.0	0.81	False
 dangle	verb	dangling	3.0	72.0	0.87	False
 danish	adjective	danish	9.0	91.0	0.89	True
 dank	adjective	dank	1.0	43.0	0.83	True
-dans	foreign_word	dans	1.0	31.0	0.78	True
 dapper	adjective	dapper	1.0	46.0	0.86	True
 dappled	adjective	dappled	1.0	46.0	0.86	True
 dare	verb	dare	10.0	95.0	0.89	True
@@ -7969,7 +7956,6 @@ dart	verb	darting	1.0	40.0	0.83	False
 dart	verb	darts	1.0	32.0	0.79	False
 darwinian	adjective	darwinian	2.0	36.0	0.77	True
 darwinism	common_noun	darwinism	1.0	31.0	0.65	True
-das	foreign_word	das	1.0	40.0	0.76	True
 dash	common_noun	dash	5.0	91.0	0.91	True
 dash	common_noun	dashes	1.0	37.0	0.82	False
 dash	verb	dash	2.0	73.0	0.9	True
@@ -8330,7 +8316,6 @@ deity	common_noun	deities	1.0	42.0	0.72	False
 deity	common_noun	deity	3.0	62.0	0.81	True
 deixis	common_noun	deixis	2.0	6.0	0.31	True
 dejected	adjective	dejected	1.0	47.0	0.85	True
-del	foreign_word	del	4.0	72.0	0.84	True
 delay	common_noun	delay	23.0	100.0	0.93	True
 delay	common_noun	delays	11.0	93.0	0.91	False
 delay	verb	delay	9.0	97.0	0.94	True
@@ -8400,7 +8385,6 @@ delusion	common_noun	delusions	1.0	50.0	0.84	False
 delve	verb	delve	1.0	60.0	0.89	True
 delve	verb	delved	1.0	35.0	0.82	False
 delve	verb	delving	1.0	44.0	0.86	False
-dem	foreign_word	dem	2.0	39.0	0.78	True
 dem	common_noun	dems	1.0	21.0	0.69	False
 demand	common_noun	demand	89.0	100.0	0.89	True
 demand	common_noun	demands	51.0	98.0	0.93	False
@@ -8578,7 +8562,6 @@ deputation	common_noun	deputation	1.0	46.0	0.82	True
 depute	common_noun	depute	1.0	9.0	0.49	True
 deputy	common_noun	deputies	12.0	68.0	0.64	False
 deputy	common_noun	deputy	39.0	98.0	0.78	True
-der	foreign_word	der	1.0	24.0	0.69	True
 der	unclassified	der	2.0	56.0	0.72	True
 deranged	adjective	deranged	1.0	33.0	0.83	True
 derby	common_noun	derby	3.0	45.0	0.73	True
@@ -8602,7 +8585,6 @@ derived	adjective	derived	1.0	35.0	0.78	True
 dermatitis	common_noun	dermatitis	1.0	23.0	0.73	True
 derogatory	adjective	derogatory	1.0	56.0	0.88	True
 derry	common_noun	derry	2.0	25.0	0.55	True
-des	foreign_word	des	10.0	84.0	0.86	True
 descend	verb	descend	4.0	86.0	0.91	True
 descend	verb	descended	8.0	93.0	0.92	False
 descend	verb	descending	3.0	77.0	0.89	False
@@ -8773,7 +8755,6 @@ detriment	common_noun	detriment	3.0	81.0	0.88	True
 detrimental	adjective	detrimental	4.0	82.0	0.91	True
 detritus	common_noun	detritus	1.0	47.0	0.78	True
 deuterium	common_noun	deuterium	1.0	9.0	0.23	True
-deutsch	foreign_word	deutsch	1.0	27.0	0.72	True
 deutschmark	common_noun	deutschmark	1.0	33.0	0.77	True
 deutschmark	common_noun	deutschmarks	1.0	24.0	0.72	False
 devaluation	common_noun	devaluation	5.0	63.0	0.81	True
@@ -8899,7 +8880,6 @@ dictionary	common_noun	dictionary	19.0	95.0	0.84	True
 dictum	common_noun	dicta	1.0	22.0	0.61	False
 dictum	common_noun	dictum	2.0	62.0	0.82	True
 didactic	adjective	didactic	1.0	49.0	0.87	True
-die	foreign_word	die	1.0	31.0	0.74	True
 die	common_noun	die	1.0	48.0	0.73	True
 die	common_noun	dies	1.0	17.0	0.43	False
 die	verb	die	53.0	100.0	0.94	True
@@ -12658,7 +12638,6 @@ floppy	adjective	floppy	5.0	83.0	0.78	True
 flora	common_noun	flora	8.0	83.0	0.74	True
 floral	adjective	floral	4.0	85.0	0.88	True
 florentine	adjective	florentine	1.0	26.0	0.73	True
-flores	foreign_word	flores	1.0	20.0	0.73	True
 florid	adjective	florid	1.0	56.0	0.88	True
 florist	common_noun	florist	1.0	43.0	0.8	True
 floss	common_noun	floss	1.0	31.0	0.76	True
@@ -14076,14 +14055,12 @@ gran	common_noun	gran	6.0	61.0	0.72	True
 grand	adjective	grand	46.0	100.0	0.94	True
 grand	adjective	grander	2.0	69.0	0.89	False
 grand	adjective	grandest	1.0	45.0	0.84	False
-grand	foreign_word	grand	1.0	33.0	0.61	True
 Grand	common_noun	grand	1.0	42.0	0.76	True
 grandad	common_noun	grandad	3.0	51.0	0.7	True
 grandchild	common_noun	grandchild	1.0	52.0	0.84	True
 grandchildren	common_noun	grandchildren	5.0	90.0	0.89	True
 granddad	common_noun	granddad	3.0	20.0	0.58	True
 granddaughter	common_noun	granddaughter	3.0	74.0	0.87	True
-grande	foreign_word	grande	1.0	30.0	0.8	True
 grandeur	common_noun	grandeur	4.0	78.0	0.9	True
 grandfather	common_noun	grandfather	15.0	94.0	0.89	True
 grandfather	common_noun	grandfathers	1.0	37.0	0.78	False
@@ -15695,7 +15672,6 @@ idealist	common_noun	idealists	1.0	37.0	0.82	False
 idealistic	adjective	idealistic	2.0	71.0	0.89	True
 idealized	adjective	idealized	1.0	39.0	0.82	True
 ideally	adverb	ideally	12.0	100.0	0.93	True
-idem	foreign_word	idem	1.0	10.0	0.41	True
 identical	adjective	identical	22.0	100.0	0.92	True
 identically	adverb	identically	1.0	43.0	0.82	True
 identifiable	adjective	identifiable	6.0	89.0	0.91	True
@@ -16444,7 +16420,6 @@ informant	common_noun	informant	2.0	57.0	0.83	True
 informant	common_noun	informants	3.0	57.0	0.79	False
 information	common_noun	information	386.0	100.0	0.92	True
 informational	adjective	informational	1.0	42.0	0.8	True
-informationssysteme	foreign_word	informationssysteme	1.0	4.0	0.32	True
 informative	adjective	informative	5.0	89.0	0.91	True
 informed	adjective	informed	6.0	90.0	0.89	True
 informer	common_noun	informer	1.0	43.0	0.77	True
@@ -17240,7 +17215,6 @@ issuer	common_noun	issuer	1.0	19.0	0.64	True
 issuer	common_noun	issuers	1.0	19.0	0.56	False
 issuing	adjective	issuing	3.0	81.0	0.89	True
 issuing	common_noun	issuing	1.0	57.0	0.87	True
-italia	foreign_word	italia	1.0	30.0	0.78	True
 italian	adjective	italian	40.0	100.0	0.91	True
 italian	common_noun	italian	9.0	98.0	0.92	True
 italian	common_noun	italians	6.0	93.0	0.91	False
@@ -17778,7 +17752,6 @@ labouring	adjective	labouring	2.0	48.0	0.75	True
 labourism	common_noun	labourism	1.0	9.0	0.19	True
 labrador	common_noun	labrador	2.0	55.0	0.84	True
 labyrinth	common_noun	labyrinth	2.0	65.0	0.85	True
-lac	foreign_word	lac	1.0	17.0	0.39	True
 lacan	common_noun	lacan	1.0	20.0	0.67	True
 lace	common_noun	lace	12.0	89.0	0.76	True
 lace	common_noun	laces	1.0	48.0	0.85	False
@@ -18213,7 +18186,6 @@ lentil	common_noun	lentils	1.0	32.0	0.73	False
 leopard	common_noun	leopard	2.0	58.0	0.63	True
 leopard	common_noun	leopards	1.0	38.0	0.66	False
 leprosy	common_noun	leprosy	1.0	31.0	0.78	True
-les	foreign_word	les	4.0	70.0	0.81	True
 lesbian	adjective	lesbian	4.0	61.0	0.73	True
 lesbian	common_noun	lesbian	3.0	53.0	0.61	True
 lesbian	common_noun	lesbians	4.0	47.0	0.59	False
@@ -18766,7 +18738,6 @@ lore	common_noun	lore	2.0	60.0	0.87	True
 lori	common_noun	lori	1.0	4.0	0.18	True
 lorry	common_noun	lorries	7.0	92.0	0.9	False
 lorry	common_noun	lorry	13.0	98.0	0.89	True
-los	foreign_word	los	1.0	30.0	0.77	True
 lose	verb	lose	65.0	100.0	0.96	True
 lose	verb	loses	8.0	97.0	0.94	False
 lose	verb	losing	35.0	100.0	0.95	False
@@ -20221,7 +20192,6 @@ modulus	common_noun	moduli	1.0	5.0	0.31	False
 modulus	common_noun	modulus	2.0	16.0	0.46	True
 mogul	common_noun	mogul	1.0	42.0	0.76	True
 mogul	common_noun	moguls	1.0	32.0	0.82	False
-moi	foreign_word	moi	2.0	53.0	0.73	True
 moist	adjective	moist	6.0	85.0	0.88	True
 moisten	verb	moistened	1.0	24.0	0.7	False
 moisture	common_noun	moisture	7.0	90.0	0.87	True
@@ -20254,7 +20224,6 @@ monarchy	common_noun	monarchy	10.0	80.0	0.85	True
 monastery	common_noun	monasteries	3.0	68.0	0.87	False
 monastery	common_noun	monastery	6.0	84.0	0.88	True
 monastic	adjective	monastic	4.0	66.0	0.76	True
-monde	foreign_word	monde	3.0	37.0	0.57	True
 monetarism	common_noun	monetarism	1.0	25.0	0.72	True
 monetarist	common_noun	monetarist	1.0	27.0	0.71	True
 monetarist	common_noun	monetarists	1.0	15.0	0.5	False
@@ -20303,7 +20272,6 @@ monster	common_noun	monsters	4.0	80.0	0.81	False
 monstrosity	common_noun	monstrosity	1.0	43.0	0.85	True
 monstrous	adjective	monstrous	3.0	78.0	0.88	True
 montage	common_noun	montage	1.0	25.0	0.75	True
-montagne	foreign_word	montagne	1.0	9.0	0.38	True
 month	common_noun	month	150.0	100.0	0.93	True
 month	common_noun	months	248.0	100.0	0.95	False
 monthly	adjective	monthly	19.0	99.0	0.9	True
@@ -20492,7 +20460,6 @@ mouth	verb	mouthing	1.0	43.0	0.85	False
 mouthful	common_noun	mouthful	4.0	71.0	0.85	True
 mouthful	common_noun	mouthfuls	1.0	36.0	0.83	False
 mouthpiece	common_noun	mouthpiece	2.0	67.0	0.88	True
-mouvement	foreign_word	mouvement	1.0	12.0	0.45	True
 movable	adjective	movable	1.0	60.0	0.87	True
 move	common_noun	move	68.0	100.0	0.93	True
 move	common_noun	moves	16.0	100.0	0.91	False
@@ -20697,7 +20664,6 @@ mythological	adjective	mythological	1.0	49.0	0.84	True
 mythology	common_noun	mythologies	1.0	22.0	0.65	False
 mythology	common_noun	mythology	4.0	79.0	0.87	True
 nacab	common_noun	nacab	1.0	4.0	0.15	True
-nacional	foreign_word	nacional	1.0	22.0	0.59	True
 nacl	common_noun	nacl	2.0	12.0	0.56	True
 nadir	common_noun	nadir	1.0	37.0	0.82	True
 nae	negative_particle	nae	1.0	27.0	0.73	True
@@ -20777,7 +20743,6 @@ nation	common_noun	nations	41.0	98.0	0.9	False
 national	adjective	national	376.0	100.0	0.91	True
 national	common_noun	national	1.0	40.0	0.81	True
 national	common_noun	nationals	5.0	75.0	0.73	False
-nationale	foreign_word	nationale	1.0	34.0	0.75	True
 nationalisation	common_noun	nationalisation	3.0	48.0	0.7	True
 nationalise	verb	nationalised	1.0	32.0	0.82	False
 nationalised	adjective	nationalised	2.0	44.0	0.76	True
@@ -20870,7 +20835,6 @@ necklace	common_noun	necklaces	1.0	53.0	0.81	False
 neckline	common_noun	neckline	1.0	32.0	0.7	True
 necrosis	common_noun	necrosis	1.0	15.0	0.49	True
 nectar	common_noun	nectar	1.0	40.0	0.69	True
-nee	foreign_word	nee	1.0	31.0	0.63	True
 need	common_noun	need	169.0	100.0	0.96	True
 need	common_noun	needs	105.0	100.0	0.92	False
 need	verb	need	356.0	100.0	0.95	True
@@ -21229,7 +21193,6 @@ nourish	verb	nourish	1.0	47.0	0.85	True
 nourish	verb	nourished	1.0	53.0	0.87	False
 nourishing	adjective	nourishing	1.0	43.0	0.85	True
 nourishment	common_noun	nourishment	2.0	71.0	0.9	True
-nouveau	foreign_word	nouveau	1.0	4.0	0.1	True
 novel	adjective	novel	11.0	91.0	0.91	True
 novel	common_noun	novel	31.0	97.0	0.86	True
 novel	common_noun	novels	13.0	88.0	0.85	False
@@ -21883,7 +21846,6 @@ otter	common_noun	otters	2.0	40.0	0.76	False
 ottoman	adjective	ottoman	3.0	46.0	0.66	True
 ouch	interjection	ouch	1.0	40.0	0.83	True
 ought	modal_verb	ought	61.0	100.0	0.93	True
-oui	foreign_word	oui	1.0	26.0	0.76	True
 ounce	common_noun	ounce	3.0	77.0	0.88	True
 ounce	common_noun	ounces	2.0	61.0	0.82	False
 our	determiner	our	950.0	100.0	0.96	True
@@ -22494,7 +22456,6 @@ partridge	common_noun	partridge	2.0	57.0	0.83	True
 partridge	common_noun	partridges	1.0	28.0	0.74	False
 party	common_noun	parties	127.0	100.0	0.86	False
 party	common_noun	party	403.0	100.0	0.88	True
-pas	foreign_word	pas	2.0	64.0	0.82	True
 pass	common_noun	pass	18.0	100.0	0.93	True
 pass	common_noun	passes	6.0	95.0	0.92	False
 pass	verb	pass	58.0	100.0	0.97	True
@@ -23015,7 +22976,6 @@ petal	common_noun	petal	1.0	41.0	0.77	True
 petal	common_noun	petals	4.0	73.0	0.85	False
 peter	verb	petered	1.0	55.0	0.88	False
 peter	verb	peters	2.0	61.0	0.86	False
-petit	foreign_word	petit	1.0	44.0	0.83	True
 petite	adjective	petite	2.0	55.0	0.85	True
 petition	common_noun	petition	12.0	93.0	0.84	True
 petition	common_noun	petitions	3.0	77.0	0.84	False
@@ -23760,7 +23720,6 @@ population	common_noun	populations	15.0	81.0	0.88	False
 populism	common_noun	populism	1.0	33.0	0.8	True
 populist	adjective	populist	3.0	51.0	0.83	True
 populous	adjective	populous	1.0	56.0	0.87	True
-por	foreign_word	por	1.0	16.0	0.56	True
 porcelain	common_noun	porcelain	4.0	76.0	0.88	True
 porch	common_noun	porch	5.0	80.0	0.89	True
 porch	common_noun	porches	1.0	31.0	0.81	False
@@ -23932,7 +23891,6 @@ pound	verb	pounded	2.0	50.0	0.86	False
 pound	verb	pounding	2.0	58.0	0.87	False
 poundage	common_noun	poundage	1.0	22.0	0.69	True
 pounding	common_noun	pounding	3.0	74.0	0.87	True
-pour	foreign_word	pour	2.0	41.0	0.67	True
 pour	verb	pour	11.0	95.0	0.9	True
 pour	verb	poured	18.0	100.0	0.88	False
 pour	verb	pouring	7.0	91.0	0.91	False
@@ -25059,7 +25017,6 @@ pyramid	common_noun	pyramids	2.0	66.0	0.86	False
 pyre	common_noun	pyre	1.0	25.0	0.67	True
 pyrenean	adjective	pyrenean	1.0	16.0	0.43	True
 python	common_noun	python	1.0	28.0	0.77	True
-qua	foreign_word	qua	1.0	28.0	0.72	True
 quack	interjection	quack	1.0	16.0	0.65	True
 quack	common_noun	quack	1.0	35.0	0.77	True
 quad	common_noun	quad	1.0	30.0	0.75	True
@@ -25132,7 +25089,6 @@ quaternary	adjective	quaternary	1.0	17.0	0.53	True
 quay	common_noun	quay	4.0	77.0	0.87	True
 quay	common_noun	quays	1.0	41.0	0.83	False
 quayside	common_noun	quayside	1.0	55.0	0.86	True
-que	foreign_word	que	1.0	44.0	0.84	True
 queasy	adjective	queasy	1.0	34.0	0.81	True
 Queen	common_noun	queen	77.0	100.0	0.93	True
 Queen	common_noun	queens	2.0	75.0	0.86	False
@@ -25165,7 +25121,6 @@ queue	verb	queue	2.0	64.0	0.88	True
 queue	verb	queued	1.0	60.0	0.88	False
 queue	verb	queueing	1.0	39.0	0.81	False
 queue	verb	queuing	2.0	69.0	0.89	False
-qui	foreign_word	qui	1.0	43.0	0.73	True
 quiche	common_noun	quiche	1.0	34.0	0.82	True
 quick	adjective	quick	58.0	100.0	0.95	True
 quick	adjective	quicker	6.0	99.0	0.94	False
@@ -25696,7 +25651,6 @@ recession	common_noun	recessions	1.0	38.0	0.74	False
 recessionary	adjective	recessionary	1.0	39.0	0.84	True
 recessive	adjective	recessive	1.0	20.0	0.72	True
 recharge	verb	recharge	1.0	47.0	0.86	True
-recherche	foreign_word	recherche	1.0	19.0	0.63	True
 recipe	common_noun	recipe	12.0	98.0	0.85	True
 recipe	common_noun	recipes	7.0	83.0	0.85	False
 recipient	common_noun	recipient	7.0	90.0	0.9	True
@@ -27606,7 +27560,6 @@ sanguine	adjective	sanguine	1.0	59.0	0.87	True
 sanitary	adjective	sanitary	3.0	77.0	0.81	True
 sanitation	common_noun	sanitation	2.0	57.0	0.83	True
 sanity	common_noun	sanity	3.0	72.0	0.89	True
-sans	foreign_word	sans	1.0	46.0	0.84	True
 sanskrit	common_noun	sanskrit	1.0	26.0	0.63	True
 sap	common_noun	sap	2.0	54.0	0.81	True
 sap	verb	sap	1.0	39.0	0.83	True
@@ -28306,7 +28259,6 @@ sepia	common_noun	sepia	1.0	40.0	0.84	True
 sepoy	common_noun	sepoys	1.0	3.0	0.04	False
 sepsis	common_noun	sepsis	1.0	14.0	0.54	True
 septic	adjective	septic	1.0	38.0	0.8	True
-seq	foreign_word	seq	1.0	11.0	0.48	True
 sequel	common_noun	sequel	3.0	73.0	0.88	True
 sequence	common_noun	sequence	42.0	98.0	0.86	True
 sequence	common_noun	sequences	14.0	77.0	0.75	False
@@ -28317,7 +28269,6 @@ sequential	adjective	sequential	4.0	54.0	0.71	True
 sequentially	adverb	sequentially	1.0	33.0	0.73	True
 sequestration	common_noun	sequestration	1.0	24.0	0.78	True
 sequin	common_noun	sequins	1.0	32.0	0.8	False
-sera	foreign_word	sera	2.0	25.0	0.54	True
 serbian	adjective	serbian	9.0	46.0	0.69	True
 serenade	common_noun	serenade	1.0	34.0	0.75	True
 serene	adjective	serene	2.0	67.0	0.89	True
@@ -28989,11 +28940,9 @@ since	preposition	since	178.0	100.0	0.93	True
 sincere	adjective	sincere	5.0	95.0	0.94	True
 sincerely	adverb	sincerely	11.0	95.0	0.74	True
 sincerity	common_noun	sincerity	3.0	83.0	0.92	True
-sine	foreign_word	sine	1.0	10.0	0.43	True
 sine	common_noun	sine	1.0	25.0	0.62	True
 sinew	common_noun	sinews	1.0	42.0	0.86	False
 sinewy	adjective	sinewy	1.0	37.0	0.82	True
-sinfonia	foreign_word	sinfonia	1.0	15.0	0.68	True
 sinful	adjective	sinful	2.0	56.0	0.84	True
 sing	verb	sang	12.0	99.0	0.91	False
 sing	verb	sing	21.0	98.0	0.91	True
@@ -31363,7 +31312,6 @@ supreme	adjective	supreme	33.0	99.0	0.73	True
 supremely	adverb	supremely	2.0	64.0	0.89	True
 supremo	common_noun	supremo	1.0	46.0	0.81	True
 SUPT	common_noun	supt	2.0	19.0	0.54	True
-sur	foreign_word	sur	1.0	43.0	0.78	True
 surcharge	common_noun	surcharge	1.0	42.0	0.83	True
 sure	adjective	sure	240.0	100.0	0.92	True
 sure	adjective	surest	1.0	35.0	0.84	False
@@ -32159,7 +32107,6 @@ terraced	adjective	terraced	4.0	84.0	0.92	True
 terracing	common_noun	terracing	1.0	24.0	0.71	True
 terracotta	common_noun	terracotta	2.0	54.0	0.82	True
 terrain	common_noun	terrain	6.0	87.0	0.91	True
-terre	foreign_word	terre	1.0	19.0	0.61	True
 terrestrial	adjective	terrestrial	3.0	58.0	0.81	True
 terrible	adjective	terrible	47.0	100.0	0.91	True
 terribly	adverb	terribly	13.0	97.0	0.91	True
@@ -32817,7 +32764,6 @@ tough	adjective	tough	32.0	100.0	0.93	True
 tough	adjective	tougher	6.0	90.0	0.89	False
 tough	adjective	toughest	3.0	67.0	0.84	False
 toughness	common_noun	toughness	2.0	65.0	0.83	True
-tour	foreign_word	tour	1.0	25.0	0.71	True
 tour	common_noun	tour	57.0	100.0	0.9	True
 tour	common_noun	tours	10.0	96.0	0.89	False
 tour	verb	tour	6.0	81.0	0.87	True
@@ -33683,7 +33629,6 @@ uncovered	adjective	uncovered	1.0	40.0	0.8	True
 uncritical	adjective	uncritical	1.0	54.0	0.87	True
 uncritically	adverb	uncritically	1.0	47.0	0.84	True
 uncut	adjective	uncut	1.0	46.0	0.86	True
-und	foreign_word	und	2.0	46.0	0.77	True
 undamaged	adjective	undamaged	1.0	56.0	0.86	True
 undated	adjective	undated	1.0	43.0	0.84	True
 undaunted	adjective	undaunted	1.0	61.0	0.88	True
@@ -33816,7 +33761,6 @@ undue	adjective	undue	5.0	90.0	0.73	True
 undulating	adjective	undulating	2.0	65.0	0.88	True
 unduly	adverb	unduly	5.0	96.0	0.94	True
 undying	adjective	undying	1.0	36.0	0.82	True
-une	foreign_word	une	1.0	45.0	0.85	True
 unearth	verb	unearthed	2.0	72.0	0.89	False
 unearthly	adjective	unearthly	1.0	40.0	0.84	True
 unease	common_noun	unease	4.0	87.0	0.91	True
@@ -34648,7 +34592,6 @@ vexatious	adjective	vexatious	1.0	32.0	0.77	True
 vexed	adjective	vexed	1.0	58.0	0.88	True
 vga	common_noun	vga	3.0	19.0	0.44	True
 vhf	common_noun	vhf	1.0	24.0	0.71	True
-via	foreign_word	via	1.0	28.0	0.56	True
 via	preposition	via	45.0	100.0	0.91	True
 viability	common_noun	viability	5.0	76.0	0.88	True
 viable	adjective	viable	10.0	91.0	0.93	True
@@ -34735,7 +34678,6 @@ villager	common_noun	villager	1.0	41.0	0.85	True
 villager	common_noun	villagers	9.0	87.0	0.89	False
 villain	common_noun	villain	3.0	81.0	0.91	True
 villain	common_noun	villains	2.0	74.0	0.89	False
-ville	foreign_word	ville	1.0	23.0	0.59	True
 villous	adjective	villous	1.0	4.0	0.45	True
 vin	common_noun	vin	1.0	22.0	0.69	True
 vinaigrette	common_noun	vinaigrette	1.0	22.0	0.65	True
@@ -34909,7 +34851,6 @@ votive	adjective	votive	1.0	21.0	0.7	True
 vouch	verb	vouch	1.0	51.0	0.86	True
 voucher	common_noun	voucher	4.0	74.0	0.86	True
 voucher	common_noun	vouchers	5.0	77.0	0.87	False
-vous	foreign_word	vous	1.0	45.0	0.81	True
 vow	common_noun	vow	2.0	57.0	0.86	True
 vow	common_noun	vows	2.0	56.0	0.85	False
 vow	verb	vow	1.0	38.0	0.81	True

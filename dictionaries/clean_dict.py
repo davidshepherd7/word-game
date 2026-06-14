@@ -131,7 +131,12 @@ def transform(rows: list[WordForm]) -> list[WordForm]:
         if len(r["word"]) < 3:
             continue
 
-        if r["part_of_speech"] == "proper_noun":
+        if r["part_of_speech"] in {
+            "proper_noun",
+            "foreign_word",
+            "tagging_error",
+            "connective",
+        }:
             continue
 
         # Data source only has integer usage-per-million, so exclude anything
