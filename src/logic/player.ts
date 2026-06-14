@@ -2,7 +2,7 @@ export { Player, LevelUp };
 
 // Cumulative experience to reach levels 2, 3 and 4. Beyond the last threshold
 // the player is at the top level.
-const LEVEL_THRESHOLDS = [100, 200, 350];
+const LEVEL_THRESHOLDS = [100, 200, 350, 500, 700, 1_000, 1_400, 2_000, 3_000];
 
 class LevelUp {}
 
