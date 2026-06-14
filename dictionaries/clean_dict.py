@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 
 import argparse
+import csv
 import os
 import sys
 from collections.abc import Iterable
@@ -84,7 +85,7 @@ def parse(lines: Iterable[str]) -> list[WordForm]:
         return {
             "lemma": lemma,
             "part_of_speech": pos_names.get(pos, "tagging_error"),
-            "word": word,
+            "word_form": word,
             "frequency": float(freq),
             "lemma_frequency": 0.0,  # Filled in later
             "range": float(rng),
@@ -108,14 +109,26 @@ def parse(lines: Iterable[str]) -> list[WordForm]:
 
 
 def dump(rows: list[WordForm], out: TextIO) -> None:
-    out.write(
-        "lemma\tpart_of_speech\tword_form\tfrequency\tlemma_frequency\tis_root_form\n"
+    columns = [
+        "lemma",
+        "part_of_speech",
+        "word_form",
+        "frequency",
+        "lemma_frequency",
+        "is_root_form",
+    ]
+    writer = csv.DictWriter(
+        out,
+        fieldnames=columns,
+        delimiter="\t",
+        lineterminator="\n",
+        # Reduce file size a bit by not quoting - we won't have any quotes and
+        # we're serving this file to users
+        quoting=csv.QUOTE_NONE,
+        extrasaction="ignore",
     )
-    for r in rows:
-        out.write(
-            f"{r['lemma']}\t{r['part_of_speech']}\t{r['word']}\t"
-            f"{r['frequency']}\t{r['lemma_frequency']}\t{r['is_root_form']}\n"
-        )
+    writer.writeheader()
+    writer.writerows(rows)
 
 
 def parse_arguments(argv: list[str]) -> argparse.Namespace:
@@ -137,10 +150,10 @@ def transform(
             f"{r['lemma_frequency']} >= {r['frequency']}"
         )
 
-        if not re.match(LETTERS, r["word"]):
+        if not re.match(LETTERS, r["word_form"]):
             continue
 
-        if len(r["word"]) < 3:
+        if len(r["word_form"]) < 3:
             continue
 
         if r["part_of_speech"] in {
@@ -164,7 +177,7 @@ def transform(
         if r["range"] <= 2.0:
             continue
 
-        r["word"] = r["word"].lower()
+        r["word_form"] = r["word_form"].lower()
 
         out.append(r)
     return out
