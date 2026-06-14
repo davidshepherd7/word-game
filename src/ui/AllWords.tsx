@@ -1,6 +1,6 @@
-import type { Word } from '../logic/word-checker.ts'
+import type { FoundWord } from '../logic/word-checker.ts'
 
-export function AllWords({ words }: { words: readonly Word[] }) {
+export function AllWords({ words }: { words: readonly FoundWord[] }) {
   const longestFirst = [...words].sort((a, b) => b.letters.length - a.letters.length)
 
   return (

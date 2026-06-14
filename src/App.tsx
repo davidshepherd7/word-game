@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
-import { generateBoard } from './logic/board.ts'
+import { generateBoard, type Letter } from './logic/board.ts'
 import { State } from './logic/state.ts'
-import { isWord, loadDictionary, solve, type Word } from './logic/word-checker.ts'
+import { isWord, loadDictionary, solve, type FoundWord } from './logic/word-checker.ts'
 import { AllWords } from './ui/AllWords.tsx'
 import { BoardView } from './ui/BoardView.tsx'
 import { FoundWords } from './ui/FoundWords.tsx'
@@ -11,7 +11,7 @@ function App() {
   const [state] = useState(() => new State(generateBoard(4)))
   // State mutates in place, so bump a counter to re-render after it changes.
   const [, setTick] = useState(0)
-  const [solution, setSolution] = useState<readonly Word[] | null>(null)
+  const [solution, setSolution] = useState<readonly FoundWord[] | null>(null)
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
@@ -19,9 +19,10 @@ function App() {
   }, [])
 
   const addWord = useCallback(
-    (word: Word) => {
-      if (!isWord(word.letters)) return
-      state.addWord(word)
+    (letters: readonly Letter[]) => {
+      const found = isWord(letters)
+      if (!found) return
+      state.addWord(found)
       setTick((tick) => tick + 1)
     },
     [state],

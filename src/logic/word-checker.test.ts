@@ -26,29 +26,36 @@ const letters = (word: string): Letter[] => [...word].map((alpha) => new Letter(
 
 describe("isWord", () => {
     it("accepts a word in the dictionary", () => {
-        expect(isWord(letters("CAT"))).toBe(true);
+        expect(isWord(letters("CAT"))).not.toBeNull();
+    });
+
+    it("returns the word's dictionary data", () => {
+        const found = isWord(letters("CAT"));
+        expect(found?.wordData.partOfSpeech).toBe("common noun");
+        expect(found?.wordData.frequency).toBe(5.0);
+        expect(found?.wordData.lemma).toBe("cat");
     });
 
     it("rejects a word not in the dictionary", () => {
-        expect(isWord(letters("CAR"))).toBe(false);
-        expect(isWord(letters("DOGE"))).toBe(false);
+        expect(isWord(letters("CAR"))).toBeNull();
+        expect(isWord(letters("DOGE"))).toBeNull();
     });
 
     it("rejects words shorter than three letters", () => {
         // "AT" is in the dictionary but too short to play.
-        expect(isWord(letters("AT"))).toBe(false);
+        expect(isWord(letters("AT"))).toBeNull();
     });
 
     it("rejects the empty word", () => {
-        expect(isWord([])).toBe(false);
+        expect(isWord([])).toBeNull();
     });
 
     it("matches a lowercase dictionary entry against uppercase board letters", () => {
-        expect(isWord(letters("CAT"))).toBe(true);
+        expect(isWord(letters("CAT"))).not.toBeNull();
     });
 
     it("ignores surrounding whitespace and blank entries in the word list", () => {
-        expect(isWord(letters("DOG"))).toBe(true);
+        expect(isWord(letters("DOG"))).not.toBeNull();
     });
 });
 

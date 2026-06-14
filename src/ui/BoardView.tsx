@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { type Board, BoardLocation, boardWord } from '../logic/board.ts'
-import { Word } from '../logic/word-checker.ts'
+import { type Board, BoardLocation, boardWord, type Letter } from '../logic/board.ts'
 
 function nextPath(path: BoardLocation[], col: number, row: number): BoardLocation[] {
   const last = path[path.length - 1]
@@ -19,7 +18,13 @@ function nextPath(path: BoardLocation[], col: number, row: number): BoardLocatio
   return [...path, new BoardLocation(col, row)]
 }
 
-export function BoardView({ board, onWord }: { board: Board; onWord?: (word: Word) => void }) {
+export function BoardView({
+  board,
+  onWord,
+}: {
+  board: Board
+  onWord?: (letters: readonly Letter[]) => void
+}) {
   // Fraction of a tile's width, measured from its centre, within which a drag
   // registers that tile. Smaller means you must drag nearer the centre.
   const hitRadiusRatio = 0.5
@@ -42,7 +47,7 @@ export function BoardView({ board, onWord }: { board: Board; onWord?: (word: Wor
     if (!selecting) return
     const stop = () => {
       setSelecting(false)
-      if (pathRef.current.length > 0) onWord?.(new Word(boardWord(board, pathRef.current)))
+      if (pathRef.current.length > 0) onWord?.(boardWord(board, pathRef.current))
       setPath([])
     }
     window.addEventListener('pointerup', stop)

@@ -1,6 +1,6 @@
-import type { Word } from "./word-checker.ts";
+import type { FoundWord } from "./word-checker.ts";
 
-function scoreWord(word: Word): number {
+function scoreFoundWord(word: FoundWord): number {
     // Boggle scoring: longer words are worth disproportionately more.
     const length = word.letters.length;
     if (length <= 4) return 1;
@@ -10,4 +10,4 @@ function scoreWord(word: Word): number {
     return 11;
 }
 
-export { scoreWord }
+export { scoreFoundWord }

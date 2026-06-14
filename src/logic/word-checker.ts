@@ -1,11 +1,34 @@
 import type { Board, Letter } from "./board.ts";
 import dictionaryUrl from "../../dictionaries/common_words.tsv?url";
 
-class Word {
-    readonly letters: readonly Letter[]
+export { isWord, solve, loadDictionary, parseDictionary, FoundWord, WordData };
 
-    constructor(letters: readonly Letter[]) {
+class WordData {
+    readonly lemma: string;
+    readonly partOfSpeech: string;
+    readonly frequency: number;
+    readonly isRootForm: boolean;
+
+    constructor(fields: {
+        lemma: string;
+        partOfSpeech: string;
+        frequency: number;
+        isRootForm: boolean;
+    }) {
+        this.lemma = fields.lemma;
+        this.partOfSpeech = fields.partOfSpeech;
+        this.frequency = fields.frequency;
+        this.isRootForm = fields.isRootForm;
+    }
+}
+
+class FoundWord {
+    readonly letters: readonly Letter[];
+    readonly wordData: WordData;
+
+    constructor(letters: readonly Letter[], wordData: WordData) {
         this.letters = letters;
+        this.wordData = wordData;
     }
 
     wordText(): string {
@@ -13,17 +36,22 @@ class Word {
     }
 }
 
-function isWord(letters: readonly Letter[]): boolean {
+function isWord(letters: readonly Letter[]): FoundWord | null {
     if (letters.length < 3) {
-        // TODO: if dict is slowing us down we could remove all 2 letter words?
-        return false
+        return null
     }
 
-    return dictionary().has(new Word(letters).wordText());
+    const rawWord = letters.map((letter) => letter.alpha).join("");
+    const wordData = dictionary().get(rawWord);
+    if (wordData == null) {
+        return null
+    }
+
+    return new FoundWord(letters, wordData)
 }
 
 /// Get a list of all possible words in the board
-function solve(board: Board): Word[] {
+function solve(board: Board): FoundWord[] {
     const grid = board.grid;
 
     // Restrict the search to words spellable from the board's letters and build
@@ -41,7 +69,7 @@ function solve(board: Board): Word[] {
     }
 
     const prefixes = new Set<string>();
-    for (const entry of dictionary()) {
+    for (const entry of dictionary().keys()) {
         if (entry.length < 3 || entry.length > availableChars) continue;
         let spellable = true;
         for (let i = 0; i < entry.length; i++) {
@@ -59,7 +87,7 @@ function solve(board: Board): Word[] {
     const words = dictionary();
     const visited = grid.map((row) => row.map(() => false));
     const path: Letter[] = [];
-    const found = new Map<string, Word>();
+    const found = new Map<string, FoundWord>();
 
     const extend = (row: number, col: number, prefix: string) => {
         const text = prefix + grid[row][col].alpha;
@@ -69,7 +97,7 @@ function solve(board: Board): Word[] {
         path.push(grid[row][col]);
 
         if (text.length >= 3 && words.has(text) && !found.has(text)) {
-            found.set(text, new Word([...path]));
+            found.set(text, new FoundWord([...path], words.get(text)!));
         }
 
         for (let nextRow = row - 1; nextRow <= row + 1; nextRow++) {
@@ -93,9 +121,9 @@ function solve(board: Board): Word[] {
     return [...found.values()];
 }
 
-let cached: ReadonlySet<string> | undefined;
+let cached: ReadonlyMap<string, WordData> | undefined;
 
-function parseDictionary(text: string): Set<string> {
+function parseDictionary(text: string): Map<string, WordData> {
     const columns = [
         "lemma",
         "part_of_speech",
@@ -111,12 +139,24 @@ function parseDictionary(text: string): Set<string> {
     if (header !== columns.join("\t")) {
         throw new Error(`Unexpected dictionary header: "${header}"`);
     }
-    const wordColumn = columns.indexOf("word_form");
-    return new Set(
-        rows
-            .map((line) => line.split("\t")[wordColumn]?.trim().toUpperCase())
-            .filter((word): word is string => Boolean(word)),
-    );
+    const column = (name: string) => columns.indexOf(name);
+
+    const dictionary = new Map<string, WordData>();
+    for (const line of rows) {
+        const fields = line.split("\t");
+        const word = fields[column("word_form")]?.trim().toUpperCase();
+        if (!word) continue;
+        dictionary.set(
+            word,
+            new WordData({
+                lemma: fields[column("lemma")]?.trim() ?? "",
+                partOfSpeech: fields[column("part_of_speech")]?.trim() ?? "",
+                frequency: Number(fields[column("frequency")]),
+                isRootForm: fields[column("is_root_form")]?.trim() === "True",
+            }),
+        );
+    }
+    return dictionary;
 }
 
 // Fetch the word list once. It is large, so it is served as a separate asset
@@ -126,9 +166,9 @@ async function loadDictionary(): Promise<void> {
     cached = parseDictionary(await (await fetch(dictionaryUrl)).text());
 }
 
-function dictionary(): ReadonlySet<string> {
+function dictionary(): ReadonlyMap<string, WordData> {
     if (!cached) throw new Error("dictionary not loaded — await loadDictionary() first");
     return cached;
 }
 
-export { isWord, loadDictionary, parseDictionary, solve, Word };
+
