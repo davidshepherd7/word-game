@@ -1,6 +1,9 @@
 
 # TODO
 
+* Add win condition
+  * Number of words
+  * Score
 
 # UI
 
@@ -22,3 +25,8 @@
 * Scrabble style points?
   * Multiplier for long words?
 * Find x words of y length to win?
+
+
+# Player levels
+
+* Unlock board size increases?

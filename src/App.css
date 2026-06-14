@@ -176,7 +176,12 @@
   opacity: 0.5;
 }
 
-.solve-button {
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+.control-button {
   font: inherit;
   font-weight: 600;
   letter-spacing: 1px;
@@ -189,7 +194,7 @@
   transition: opacity 0.15s ease;
 }
 
-.solve-button:hover {
+.control-button:hover {
   opacity: 0.85;
 }
 
