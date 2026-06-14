@@ -10,6 +10,33 @@ import { FoundWords } from './ui/FoundWords.tsx';
 import { PlayerScreen } from './ui/PlayerScreen.tsx';
 import './App.css';
 
+// Debug mode is hidden from normal players but reachable on any build (including
+// production) by visiting with `?debug=1`. The choice latches into localStorage so
+// it survives later navigation; `?debug=0` turns it back off. Not a security
+// boundary — just keeps the debug controls out of the way of real players.
+function debugEnabled(): boolean {
+  let param: string | null = null;
+  try {
+    param = new URLSearchParams(window.location.search).get('debug');
+  } catch {
+    return false;
+  }
+  if (param !== null) {
+    const on = param !== '0' && param !== 'false';
+    try {
+      localStorage.setItem('wordgame:debug', on ? '1' : '0');
+    } catch {
+      // Ignore: localStorage may be unavailable (private mode / quota).
+    }
+    return on;
+  }
+  try {
+    return localStorage.getItem('wordgame:debug') === '1';
+  } catch {
+    return false;
+  }
+}
+
 function newGame(): Game {
   const game = generateGame();
   // Persist the fresh board immediately so a reload before the first word
@@ -39,6 +66,7 @@ function App() {
   // Game mutates in place, so bump a counter to re-render after it changes.
   const [, setTick] = useState(0);
   const [solution, setSolution] = useState<readonly FoundWord[] | null>(null);
+  const [debug] = useState(debugEnabled);
 
   useEffect(() => {
     loadDictionary()
@@ -58,6 +86,17 @@ function App() {
     return () => clearTimeout(timer);
   }, [victoryExp]);
 
+  const handleWin = useCallback(() => {
+    if (!game || !player) return;
+    const exp = game.winCondition.expAwarded();
+    player.gainExperience(exp);
+    storage.savePlayer(player);
+    storage.clearGame();
+    setHasSavedGame(false);
+    setSolution(null);
+    setVictoryExp(exp);
+  }, [game, player]);
+
   const addWord = useCallback(
     (letters: readonly Letter[]) => {
       if (!game || !player) return;
@@ -66,13 +105,7 @@ function App() {
       game.addWord(found);
 
       if (game.hasWon()) {
-        const exp = game.winCondition.expAwarded();
-        player.gainExperience(exp);
-        storage.savePlayer(player);
-        storage.clearGame();
-        setHasSavedGame(false);
-        setSolution(null);
-        setVictoryExp(exp);
+        handleWin();
         return;
       }
 
@@ -83,8 +116,14 @@ function App() {
       });
       setTick((tick) => tick + 1);
     },
-    [game, player],
+    [game, player, handleWin],
   );
+
+  const winGame = useCallback(() => {
+    if (!game) return;
+    game.solution.forEach((word) => game.addWord(word));
+    if (game.hasWon()) handleWin();
+  }, [game, handleWin]);
 
   const startNewGame = useCallback(() => {
     setGame(newGame());
@@ -133,14 +172,16 @@ function App() {
           onNewGame={startNewGame}
           onResume={hasSavedGame ? resumeGame : undefined}
         />
-        <section className="debug">
-          <h2>Debug</h2>
-          <div className="controls">
-            <button type="button" className="control-button" onClick={clearStorage}>
-              Clear storage
-            </button>
-          </div>
-        </section>
+        {debug && (
+          <section className="debug">
+            <h2>Debug</h2>
+            <div className="controls">
+              <button type="button" className="control-button" onClick={clearStorage}>
+                Clear storage
+              </button>
+            </div>
+          </section>
+        )}
       </main>
     );
   }
@@ -158,18 +199,23 @@ function App() {
         </aside>
         <BoardView board={game.board} onWord={addWord} />
       </div>
-      <section className="debug">
-        <h2>Debug</h2>
-        <div className="controls">
-          <button type="button" className="control-button" onClick={toggleSolution}>
-            {solution ? 'Hide all words' : 'Show all words'}
-          </button>
-          <button type="button" className="control-button" onClick={clearStorage}>
-            Clear storage
-          </button>
-        </div>
-        {solution && <AllWords words={solution} />}
-      </section>
+      {debug && (
+        <section className="debug">
+          <h2>Debug</h2>
+          <div className="controls">
+            <button type="button" className="control-button" onClick={toggleSolution}>
+              {solution ? 'Hide all words' : 'Show all words'}
+            </button>
+            <button type="button" className="control-button" onClick={winGame}>
+              Win game
+            </button>
+            <button type="button" className="control-button" onClick={clearStorage}>
+              Clear storage
+            </button>
+          </div>
+          {solution && <AllWords words={solution} />}
+        </section>
+      )}
       {victoryExp != null && (
         <div className="victory-overlay" role="alert">
           <div className="victory-card">
