@@ -169,9 +169,6 @@ def transform(
         if r["lemma_frequency"] < 1.0:
             continue
 
-        # if r["frequency"] < 1.0:
-        #     continue
-
         # Exclude words used a lot but not by many sources. 3.0 excludes things
         # like muon and antiracist which seems valid.
         if r["range"] <= 2.0:
