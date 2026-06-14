@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
-import { generateBoard, type Letter } from './logic/board.ts';
-import { Game } from './logic/game.ts';
+import { type Letter } from './logic/board.ts';
+import { Game, generateGame } from './logic/game.ts';
 import { Player } from './logic/player.ts';
-import { randomWinCondition } from './logic/win-condition.ts';
 import { isWord, loadDictionary, solve, type FoundWord } from './logic/word-checker.ts';
 import { storage } from './storage/storage.ts';
 import { AllWords } from './ui/AllWords.tsx';
@@ -12,8 +11,7 @@ import { PlayerScreen } from './ui/PlayerScreen.tsx';
 import './App.css';
 
 function newGame(): Game {
-  // TODO: we should probably check that the board is winnable
-  const game = new Game(generateBoard(4), randomWinCondition());
+  const game = generateGame();
   // Persist the fresh board immediately so a reload before the first word
   // restores this board rather than generating a different one.
   storage.saveGame({ board: game.board, words: [], winCondition: game.winCondition });
@@ -25,7 +23,7 @@ function loadSavedGame(): Game | null {
   // loaded by the time this is called.
   const saved = storage.loadGame();
   if (!saved) return null;
-  const game = new Game(saved.board, saved.winCondition);
+  const game = new Game(saved.board, solve(saved.board), saved.winCondition);
   saved.words.forEach((word) => game.addWord(word));
   return game;
 }
