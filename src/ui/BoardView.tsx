@@ -100,6 +100,10 @@ export function BoardView({ board, onWord }: { board: Board; onWord?: (word: Wor
                 }}
                 onPointerDown={(event) => {
                   if (event.button !== 0) return
+                  // Touch implicitly captures the pointer to this cell, which
+                  // would send every later pointermove here instead of to the
+                  // cell under the finger. Release it so the drag can advance.
+                  event.currentTarget.releasePointerCapture(event.pointerId)
                   setSelecting(true)
                   setPath([new BoardLocation(col, row)])
                 }}

@@ -32,7 +32,8 @@
   gap: 40px;
 
   @media (max-width: 640px) {
-    flex-direction: column;
+    /* Board first, then the found-words sidebar beneath it. */
+    flex-direction: column-reverse;
     align-items: center;
   }
 }
