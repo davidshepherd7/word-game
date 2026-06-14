@@ -148,6 +148,19 @@
   opacity: 0.7;
 }
 
+.victory {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--accent);
+}
+
+.board[aria-disabled='true'] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 .found-words {
   color: var(--ink);
 }

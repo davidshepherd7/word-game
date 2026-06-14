@@ -1,4 +1,5 @@
 import { Board, Letter } from '../logic/board.ts';
+import { LongWordWin, WinCondition, WordCountWin } from '../logic/win-condition.ts';
 import { FoundWord, isWord } from '../logic/word-checker.ts';
 
 export { gameCodec };
@@ -12,17 +13,19 @@ type Codec<T> = {
   decode(raw: unknown): T;
 };
 
-type SavedGame = { board: Board; words: readonly FoundWord[] };
+type SavedGame = { board: Board; words: readonly FoundWord[]; winCondition: WinCondition };
 
 const gameCodec: Codec<SavedGame> = {
-  encode: ({ board, words }) => ({
+  encode: ({ board, words, winCondition }) => ({
     grid: board.grid.map((row) => row.map((letter) => letter.alpha)),
     words: words.map((word) => word.letters.map((letter) => letter.alpha)),
+    winCondition: encodeWinCondition(winCondition),
   }),
   decode: (raw) => {
     const dto = asRecord(raw);
     const grid = asStringMatrix(dto.grid);
     const words = asStringMatrix(dto.words);
+    const winCondition = decodeWinCondition(dto.winCondition);
     // new Letter() asserts uppercase, so a corrupt tile throws here.
     const board = new Board(grid.map((row) => row.map((alpha) => new Letter(alpha))));
     // The dictionary is the authority on words: re-running isWord both
@@ -32,9 +35,24 @@ const gameCodec: Codec<SavedGame> = {
     const found = words
       .map((letters) => isWord(letters.map((alpha) => new Letter(alpha))))
       .filter((word): word is FoundWord => word !== null);
-    return { board, words: found };
+    return { board, words: found, winCondition };
   },
 };
+
+function encodeWinCondition(win: WinCondition): unknown {
+  if (win instanceof WordCountWin) return { type: 'wordCount', target: win.target };
+  if (win instanceof LongWordWin) return { type: 'longWord', minLength: win.minLength };
+  throw new Error('unknown win condition');
+}
+
+function decodeWinCondition(raw: unknown): WinCondition {
+  const dto = asRecord(raw);
+  if (dto.type === 'wordCount' && typeof dto.target === 'number')
+    return new WordCountWin(dto.target);
+  if (dto.type === 'longWord' && typeof dto.minLength === 'number')
+    return new LongWordWin(dto.minLength);
+  throw new Error('unrecognised win condition');
+}
 
 function asRecord(value: unknown): Record<string, unknown> {
   if (typeof value !== 'object' || value === null || Array.isArray(value)) {

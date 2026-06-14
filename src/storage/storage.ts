@@ -3,6 +3,9 @@ import { type Codec, gameCodec, type SavedGame } from './codecs.ts';
 export { storage };
 export type { SavedGame };
 
+// Pre-release: we change the stored schema in place rather than bumping this
+// and adding a migration step. Old saves that no longer fit just get discarded
+// (see read's catch). Start versioning + migrating once we've shipped.
 const VERSION = 1;
 
 const KEYS = {

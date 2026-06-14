@@ -5,6 +5,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 vi.mock('../../dictionaries/common_words.tsv?url', () => ({ default: '/dict.tsv' }));
 
 import { Board, Letter } from '../logic/board.ts';
+import { WinCondition, WordCountWin } from '../logic/win-condition.ts';
 import { isWord, loadDictionary } from '../logic/word-checker.ts';
 import { gameCodec } from './codecs.ts';
 import { storage } from './storage.ts';
@@ -38,6 +39,7 @@ const sampleBoard = () =>
     [new Letter('C'), new Letter('A')],
     [new Letter('T'), new Letter('S')],
   ]);
+const sampleWin = (): WinCondition => new WordCountWin(5);
 
 beforeAll(async () => {
   vi.stubGlobal(
@@ -53,8 +55,12 @@ beforeEach(() => {
 });
 
 describe('game persistence', () => {
-  it('round-trips a board and its found words', () => {
-    const game = { board: sampleBoard(), words: [isWord(letters('CAT'))!] };
+  it('round-trips a board, its found words, and the win condition', () => {
+    const game = {
+      board: sampleBoard(),
+      words: [isWord(letters('CAT'))!],
+      winCondition: sampleWin(),
+    };
     storage.saveGame(game);
 
     const loaded = storage.loadGame();
@@ -63,10 +69,16 @@ describe('game persistence', () => {
       ['T', 'S'],
     ]);
     expect(loaded?.words.map((w) => w.wordText())).toEqual(['CAT']);
+    expect(loaded?.winCondition).toBeInstanceOf(WordCountWin);
+    expect((loaded?.winCondition as WordCountWin).target).toBe(5);
   });
 
   it('re-attaches dictionary data to loaded words', () => {
-    storage.saveGame({ board: sampleBoard(), words: [isWord(letters('CAT'))!] });
+    storage.saveGame({
+      board: sampleBoard(),
+      words: [isWord(letters('CAT'))!],
+      winCondition: sampleWin(),
+    });
     expect(storage.loadGame()?.words[0].wordData.frequency).toBe(5.0);
   });
 
@@ -80,6 +92,7 @@ describe('game persistence', () => {
         ['C', 'A', 'T'],
         ['X', 'Y', 'Z'],
       ],
+      winCondition: { type: 'wordCount', target: 5 },
     });
     expect(decoded.words.map((w) => w.wordText())).toEqual(['CAT']);
   });
@@ -89,7 +102,7 @@ describe('game persistence', () => {
   });
 
   it('clears a saved game', () => {
-    storage.saveGame({ board: sampleBoard(), words: [] });
+    storage.saveGame({ board: sampleBoard(), words: [], winCondition: sampleWin() });
     storage.clearGame();
     expect(storage.loadGame()).toBeNull();
   });
@@ -124,6 +137,8 @@ describe('defensive reads', () => {
         throw new Error('QuotaExceededError');
       },
     });
-    expect(() => storage.saveGame({ board: sampleBoard(), words: [] })).not.toThrow();
+    expect(() =>
+      storage.saveGame({ board: sampleBoard(), words: [], winCondition: sampleWin() }),
+    ).not.toThrow();
   });
 });
