@@ -7,7 +7,6 @@ export function FoundWords({ words }: { words: readonly FoundWord[] }) {
 
   return (
     <section className="found-words" aria-label="Found words">
-      <h2>Found {words.length}</h2>
       <ul>
         {longestFirst.map((word) => (
           <li key={word.wordText()}>{word.wordText()}</li>

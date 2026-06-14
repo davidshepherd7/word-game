@@ -67,14 +67,6 @@
   color: var(--ink);
 }
 
-.current-word .hint {
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: normal;
-  text-transform: none;
-  opacity: 0.5;
-}
-
 .board {
   position: relative;
   display: inline-flex;
@@ -186,6 +178,24 @@
 
 .found-words li {
   letter-spacing: 1px;
+  opacity: 0.5;
+}
+
+.debug {
+  width: 100%;
+  max-width: 720px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--ink);
+}
+
+.debug h2 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   opacity: 0.5;
 }
 

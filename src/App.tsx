@@ -67,6 +67,10 @@ function App() {
     setSolution((current) => (current ? null : solve(game.board)));
   }, [game]);
 
+  const clearStorage = useCallback(() => {
+    storage.clearGame();
+  }, []);
+
   if (!game) {
     return (
       <main className="game">
@@ -81,6 +85,9 @@ function App() {
   return (
     <main className="game">
       <h1>Word Game</h1>
+      <button type="button" className="control-button" onClick={startNewGame}>
+        New game
+      </button>
       <div className="play-area">
         <aside className="sidebar">
           <p className="score">{game.status()}</p>
@@ -89,15 +96,18 @@ function App() {
         </aside>
         <BoardView board={game.board} onWord={addWord} disabled={won} />
       </div>
-      <div className="controls">
-        <button type="button" className="control-button" onClick={startNewGame}>
-          New game
-        </button>
-        <button type="button" className="control-button" onClick={toggleSolution}>
-          {solution ? 'Hide all words' : 'Show all words'}
-        </button>
-      </div>
-      {solution && <AllWords words={solution} />}
+      <section className="debug">
+        <h2>Debug</h2>
+        <div className="controls">
+          <button type="button" className="control-button" onClick={toggleSolution}>
+            {solution ? 'Hide all words' : 'Show all words'}
+          </button>
+          <button type="button" className="control-button" onClick={clearStorage}>
+            Clear storage
+          </button>
+        </div>
+        {solution && <AllWords words={solution} />}
+      </section>
     </main>
   );
 }

@@ -89,7 +89,7 @@ export function BoardView({
   return (
     <div className="board-area">
       <div className="current-word" aria-live="polite">
-        {word || <span className="hint">Drag across letters to spell a word</span>}
+        {word}
       </div>
       <div
         className="board"
