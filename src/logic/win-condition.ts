@@ -25,8 +25,7 @@ class WordCountWin extends WinCondition {
   }
 
   expAwarded(): number {
-    // More complex function of target, slow exponential?
-    return 10;
+    return Math.ceil((this.target / 3) ** 2);
   }
 }
 
@@ -44,16 +43,22 @@ class LongWordWin extends WinCondition {
 
   renderStatus(foundWords: readonly FoundWord[]): string {
     const longest = foundWords.reduce((max, word) => Math.max(max, word.letters.length), 0);
-    return `longest ${longest}/${this.minLength} letters`;
+    return `find a word with ${this.minLength} letters (longest ${longest})`;
   }
 
   expAwarded(): number {
-    // More complex function of target, fast exponential?
-    return 10;
+    return 2 ** this.minLength;
   }
 }
 
-function randomWinCondition(): WinCondition {
-  const choices = [new WordCountWin(5), new LongWordWin(5)];
+function randomChoice<T>(choices: T[]): T {
   return choices[Math.floor(Math.random() * choices.length)];
+}
+
+function randomWinCondition(): WinCondition {
+  const choices = [
+    new WordCountWin(randomChoice([3, 5, 8, 12, 15])),
+    new LongWordWin(randomChoice([4, 5, 6, 7])),
+  ];
+  return randomChoice(choices);
 }
