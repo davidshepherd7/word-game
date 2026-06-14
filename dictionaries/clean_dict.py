@@ -136,7 +136,7 @@ def transform(rows: list[WordForm]) -> list[WordForm]:
 
         # Data source only has integer usage-per-million, so exclude anything
         # that they rounded to zero.
-        if r["frequency"] > 0.5:
+        if r["frequency"] < 1.0:
             continue
 
         # Exclude words used a lot but not by many sources. 3.0 excludes things
