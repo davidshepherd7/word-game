@@ -108,11 +108,13 @@ def parse(lines: Iterable[str]) -> list[WordForm]:
 
 
 def dump(rows: list[WordForm], out: TextIO) -> None:
-    out.write("lemma\tpart_of_speech\tword_form\tfrequency\tis_root_form\n")
+    out.write(
+        "lemma\tpart_of_speech\tword_form\tfrequency\tlemma_frequency\tis_root_form\n"
+    )
     for r in rows:
         out.write(
             f"{r['lemma']}\t{r['part_of_speech']}\t{r['word']}\t"
-            f"{r['frequency']}\t{r['is_root_form']}\n"
+            f"{r['frequency']}\t{r['lemma_frequency']}\t{r['is_root_form']}\n"
         )
 
 

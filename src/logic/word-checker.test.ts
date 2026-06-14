@@ -11,11 +11,11 @@ import { isWord, loadDictionary, parseDictionary, solve } from './word-checker.t
 
 const mockTsv =
   'lemma\tpart_of_speech\tword_form\tfrequency\tis_root_form\n' +
-  'cat\tcommon noun\tcat\t5.0\tTrue\n' +
-  'dog\tcommon noun\t  dog  \t4.0\tTrue\n' +
+  'cat\tcommon noun\tcat\t5.0\t5.0\tTrue\n' +
+  'dog\tcommon noun\t  dog  \t4.0\t4.0\tTrue\n' +
   '\n' +
-  'at\tpreposition\tAT\t10.0\tTrue\n' +
-  'quiz\tcommon noun\tquiz\t1.0\tTrue';
+  'at\tpreposition\tAT\t10.0\t10.0\tTrue\n' +
+  'quiz\tcommon noun\tquiz\t1.0\t1.0\tTrue';
 
 beforeAll(async () => {
   vi.stubGlobal(

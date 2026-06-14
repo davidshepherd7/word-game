@@ -7,17 +7,20 @@ class WordData {
   readonly lemma: string;
   readonly partOfSpeech: string;
   readonly frequency: number;
+  readonly lemmaFrequency: number;
   readonly isRootForm: boolean;
 
   constructor(fields: {
     lemma: string;
     partOfSpeech: string;
     frequency: number;
+    lemmaFrequency: number;
     isRootForm: boolean;
   }) {
     this.lemma = fields.lemma;
     this.partOfSpeech = fields.partOfSpeech;
     this.frequency = fields.frequency;
+    this.lemmaFrequency = fields.lemmaFrequency;
     this.isRootForm = fields.isRootForm;
   }
 }
@@ -124,7 +127,14 @@ function solve(board: Board): FoundWord[] {
 let cached: ReadonlyMap<string, WordData> | undefined;
 
 function parseDictionary(text: string): Map<string, WordData> {
-  const columns = ['lemma', 'part_of_speech', 'word_form', 'frequency', 'is_root_form'];
+  const columns = [
+    'lemma',
+    'part_of_speech',
+    'word_form',
+    'frequency',
+    'lemma_frequency',
+    'is_root_form',
+  ];
   // Verify the header is what we assume, so a changed format fails loudly here
   // rather than silently reading words from the wrong column.
   const [header, ...rows] = text.split('\n');
@@ -144,6 +154,7 @@ function parseDictionary(text: string): Map<string, WordData> {
         lemma: fields[column('lemma')]?.trim() ?? '',
         partOfSpeech: fields[column('part_of_speech')]?.trim() ?? '',
         frequency: Number(fields[column('frequency')]),
+        lemmaFrequency: Number(fields[column('lemma_frequency')]),
         isRootForm: fields[column('is_root_form')]?.trim() === 'True',
       }),
     );
