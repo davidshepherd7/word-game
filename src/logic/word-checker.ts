@@ -1,5 +1,5 @@
 import type { Board, Letter } from "./board.ts";
-import bncText from "../../dictionaries/simple_bnc_dict_no_swears.tsv?raw";
+import dictionaryUrl from "../../dictionaries/common_words.tsv?url";
 
 class Word {
     readonly letters: readonly Letter[]
@@ -93,19 +93,42 @@ function solve(board: Board): Word[] {
     return [...found.values()];
 }
 
-function dictionary(): ReadonlySet<string> {
-    // The BNC list is a TSV (lemma, PoS, word, ...); the playable word is the
-    // third column. Board letters are uppercase, so normalize to uppercase.
-    // Built once and reused.
-    cached ??= new Set(
-        bncText
-            .split("\n")
-            .map((line) => line.split("\t")[2]?.trim().toUpperCase())
+let cached: ReadonlySet<string> | undefined;
+
+function parseDictionary(text: string): Set<string> {
+    const columns = [
+        "lemma",
+        "part_of_speech",
+        "word_form",
+        "frequency",
+        "range",
+        "dispersion",
+        "is_root_form",
+    ];
+    // Verify the header is what we assume, so a changed format fails loudly here
+    // rather than silently reading words from the wrong column.
+    const [header, ...rows] = text.split("\n");
+    if (header !== columns.join("\t")) {
+        throw new Error(`Unexpected dictionary header: "${header}"`);
+    }
+    const wordColumn = columns.indexOf("word_form");
+    return new Set(
+        rows
+            .map((line) => line.split("\t")[wordColumn]?.trim().toUpperCase())
             .filter((word): word is string => Boolean(word)),
     );
+}
+
+// Fetch the word list once. It is large, so it is served as a separate asset
+// rather than bundled into the JS; await this before calling isWord or solve.
+async function loadDictionary(): Promise<void> {
+    if (cached) return;
+    cached = parseDictionary(await (await fetch(dictionaryUrl)).text());
+}
+
+function dictionary(): ReadonlySet<string> {
+    if (!cached) throw new Error("dictionary not loaded — await loadDictionary() first");
     return cached;
 }
 
-let cached: ReadonlySet<string> | undefined;
-
-export { isWord, solve, Word };
+export { isWord, loadDictionary, parseDictionary, solve, Word };

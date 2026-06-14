@@ -1,19 +1,26 @@
-import { describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
-// Replace the bundled BNC word list with a small mock dictionary. It is a TSV
-// whose third column is the word; this includes a lowercase entry, a padded
-// entry, and a blank line to exercise normalization.
-vi.mock("../../dictionaries/simple_bnc_dict_no_swears.tsv?raw", () => ({
-    default:
-        "x\tNoC\tcat\t1\t1\t0.5\t1\n" +
-        "x\tNoC\t  dog  \t1\t1\t0.5\t1\n" +
-        "\n" +
-        "x\tNoC\tAT\t1\t1\t0.5\t1\n" +
-        "x\tNoC\tquiz\t1\t1\t0.5\t1",
-}));
+// The word list is fetched at runtime; mock its URL and the fetch response with
+// a few rows of common_words.tsv (a header plus lemma, part_of_speech,
+// word_form, ...). The word is the third column; the rows include a lowercase
+// entry, a padded entry, and a blank line to exercise normalization.
+vi.mock("../../dictionaries/common_words.tsv?url", () => ({ default: "/dict.tsv" }));
 
 import { Board, Letter } from "./board.ts";
-import { isWord, solve } from "./word-checker.ts";
+import { isWord, loadDictionary, parseDictionary, solve } from "./word-checker.ts";
+
+const mockTsv =
+    "lemma\tpart_of_speech\tword_form\tfrequency\trange\tdispersion\tis_root_form\n" +
+    "cat\tcommon noun\tcat\t5.0\t100.0\t0.90\tTrue\n" +
+    "dog\tcommon noun\t  dog  \t4.0\t99.0\t0.89\tTrue\n" +
+    "\n" +
+    "at\tpreposition\tAT\t10.0\t100.0\t0.95\tTrue\n" +
+    "quiz\tcommon noun\tquiz\t1.0\t50.0\t0.70\tTrue";
+
+beforeAll(async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => ({ text: async () => mockTsv })));
+    await loadDictionary();
+});
 
 const letters = (word: string): Letter[] => [...word].map((alpha) => new Letter(alpha));
 
@@ -42,6 +49,18 @@ describe("isWord", () => {
 
     it("ignores surrounding whitespace and blank entries in the word list", () => {
         expect(isWord(letters("DOG"))).toBe(true);
+    });
+});
+
+describe("parseDictionary", () => {
+    it("skips the header row", () => {
+        const words = parseDictionary(mockTsv);
+        expect(words.has("CAT")).toBe(true);
+        expect(words.has("WORD_FORM")).toBe(false);
+    });
+
+    it("throws if the columns are not what we assume", () => {
+        expect(() => parseDictionary("word\tcount\nCAT\t5")).toThrow();
     });
 });
 
