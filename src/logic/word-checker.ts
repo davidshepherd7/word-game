@@ -1,5 +1,5 @@
 import type { Board, Letter } from "./board.ts";
-import sowpodsText from "./sowpods.txt?raw";
+import bncText from "../../dictionaries/simple_bnc_dict_no_swears.tsv?raw";
 
 class Word {
     readonly letters: readonly Letter[]
@@ -30,18 +30,19 @@ function solve(board: Board): Word[] {
     // a prefix index from them. The walk below still enforces the real
     // adjacency / no-reuse rules, so over-including candidates is harmless — it
     // just keeps the index small enough to prune dead branches cheaply.
-    let cellCount = 0;
+    let availableChars = 0;
     const available = new Set<string>();
     for (const row of grid) {
         for (const letter of row) {
-            available.add(letter.alpha);
-            cellCount++;
+            // A tile's alpha may be a digraph ("QU"), so index its characters.
+            for (const char of letter.alpha) available.add(char);
+            availableChars += letter.alpha.length;
         }
     }
 
     const prefixes = new Set<string>();
     for (const entry of dictionary()) {
-        if (entry.length < 3 || entry.length > cellCount) continue;
+        if (entry.length < 3 || entry.length > availableChars) continue;
         let spellable = true;
         for (let i = 0; i < entry.length; i++) {
             if (!available.has(entry[i])) {
@@ -93,10 +94,14 @@ function solve(board: Board): Word[] {
 }
 
 function dictionary(): ReadonlySet<string> {
-    // SOWPODS is lowercase; board letters are uppercase. Normalize to uppercase
-    // so the two meet. Built once and reused.
+    // The BNC list is a TSV (lemma, PoS, word, ...); the playable word is the
+    // third column. Board letters are uppercase, so normalize to uppercase.
+    // Built once and reused.
     cached ??= new Set(
-        sowpodsText.split("\n").map((line) => line.trim().toUpperCase()).filter(Boolean),
+        bncText
+            .split("\n")
+            .map((line) => line.split("\t")[2]?.trim().toUpperCase())
+            .filter((word): word is string => Boolean(word)),
     );
     return cached;
 }

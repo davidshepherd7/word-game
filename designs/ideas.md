@@ -1,8 +1,6 @@
 
 # TODO
 
-* Q always comes with u attached
-
 
 # UI
 

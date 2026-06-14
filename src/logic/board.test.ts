@@ -30,13 +30,18 @@ describe("generateBoard", () => {
         }
     });
 
-    it("fills every cell with a single uppercase letter", () => {
+    it("fills every cell with an uppercase letter or the QU digraph", () => {
         for (const row of generateBoard(5).grid) {
             for (const cell of row) {
                 expect(cell).toBeInstanceOf(Letter);
-                expect(cell.alpha).toMatch(/^[A-Z]$/);
+                expect(cell.alpha).toMatch(/^(QU|[A-Z])$/);
             }
         }
+    });
+
+    it("never produces a bare Q tile (Q is always the QU digraph)", () => {
+        const cells = generateBoard(40).grid.flat();
+        expect(cells.every((cell) => cell.alpha !== "Q")).toBe(true);
     });
 
     it("returns an empty board for size 0 instead of throwing", () => {

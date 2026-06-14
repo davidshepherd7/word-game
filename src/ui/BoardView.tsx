@@ -113,7 +113,7 @@ export function BoardView({ board, onWord }: { board: Board; onWord?: (word: Wor
                   }
                 }}
               >
-                {letter.alpha}
+                {letter.alpha === 'QU' ? 'Qu' : letter.alpha}
               </div>
             ))}
           </div>
