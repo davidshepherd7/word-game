@@ -10,12 +10,12 @@ import { Board, Letter } from "./board.ts";
 import { isWord, loadDictionary, parseDictionary, solve } from "./word-checker.ts";
 
 const mockTsv =
-    "lemma\tpart_of_speech\tword_form\tfrequency\trange\tdispersion\tis_root_form\n" +
-    "cat\tcommon noun\tcat\t5.0\t100.0\t0.90\tTrue\n" +
-    "dog\tcommon noun\t  dog  \t4.0\t99.0\t0.89\tTrue\n" +
+    "lemma\tpart_of_speech\tword_form\tfrequency\tis_root_form\n" +
+    "cat\tcommon noun\tcat\t5.0\tTrue\n" +
+    "dog\tcommon noun\t  dog  \t4.0\tTrue\n" +
     "\n" +
-    "at\tpreposition\tAT\t10.0\t100.0\t0.95\tTrue\n" +
-    "quiz\tcommon noun\tquiz\t1.0\t50.0\t0.70\tTrue";
+    "at\tpreposition\tAT\t10.0\tTrue\n" +
+    "quiz\tcommon noun\tquiz\t1.0\tTrue";
 
 beforeAll(async () => {
     vi.stubGlobal("fetch", vi.fn(async () => ({ text: async () => mockTsv })));

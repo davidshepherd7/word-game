@@ -129,8 +129,6 @@ function parseDictionary(text: string): Map<string, WordData> {
         "part_of_speech",
         "word_form",
         "frequency",
-        "range",
-        "dispersion",
         "is_root_form",
     ];
     // Verify the header is what we assume, so a changed format fails loudly here
