@@ -11,9 +11,9 @@ import { gameCodec } from './codecs.ts';
 import { storage } from './storage.ts';
 
 const mockTsv =
-  'lemma\tpart_of_speech\tword_form\tfrequency\tis_root_form\n' +
-  'cat\tcommon noun\tcat\t5.0\tTrue\n' +
-  'dog\tcommon noun\tdog\t4.0\tTrue\n';
+  'lemma\tpart_of_speech\tword_form\tfrequency\tlemma_frequency\tis_root_form\n' +
+  'cat\tcommon noun\tcat\t5.0\t5.0\tTrue\n' +
+  'dog\tcommon noun\tdog\t4.0\t4.0\tTrue\n';
 
 function mockLocalStorage(): Storage {
   const store = new Map<string, string>();

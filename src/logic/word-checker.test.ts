@@ -10,7 +10,7 @@ import { Board, Letter } from './board.ts';
 import { isWord, loadDictionary, parseDictionary, solve } from './word-checker.ts';
 
 const mockTsv =
-  'lemma\tpart_of_speech\tword_form\tfrequency\tis_root_form\n' +
+  'lemma\tpart_of_speech\tword_form\tfrequency\tlemma_frequency\tis_root_form\n' +
   'cat\tcommon noun\tcat\t5.0\t5.0\tTrue\n' +
   'dog\tcommon noun\t  dog  \t4.0\t4.0\tTrue\n' +
   '\n' +
