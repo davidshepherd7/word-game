@@ -1,16 +1,13 @@
 
 # TODO
 
-* Add win condition
-  * Number of words
-  * Score
-
-# UI
-
-* Make dragging look smoother?
+* Leveling up should do something
+* UI: Make dragging look smoother?
+* Letter characters gatcha
 
 
-# Special abilities
+
+# Possible Special abilities
 * Allow british spellings.
 * Disallow plurals by default, special ability enables.
 * Always get certain letter combos (ed, ing, etc)
@@ -20,7 +17,7 @@
 * More points for words on corner, edge middle?
 
 
-# Scoring/winning
+# Other win conditions
 
 * Scrabble style points?
   * Multiplier for long words?
@@ -30,3 +27,4 @@
 # Player levels
 
 * Unlock board size increases?
+* Unlock letters?
