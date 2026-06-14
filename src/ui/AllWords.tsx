@@ -1,7 +1,7 @@
-import type { FoundWord } from '../logic/word-checker.ts'
+import type { FoundWord } from '../logic/word-checker.ts';
 
 export function AllWords({ words }: { words: readonly FoundWord[] }) {
-  const longestFirst = [...words].sort((a, b) => b.letters.length - a.letters.length)
+  const longestFirst = [...words].sort((a, b) => b.letters.length - a.letters.length);
 
   return (
     <section className="all-words" aria-label="All possible words">
@@ -12,5 +12,5 @@ export function AllWords({ words }: { words: readonly FoundWord[] }) {
         ))}
       </ul>
     </section>
-  )
+  );
 }

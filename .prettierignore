@@ -1,0 +1,7 @@
+dist
+node_modules
+dictionaries/*.tsv
+
+# Prose and agent config — not code, leave formatting as-authored.
+.claude
+**/*.md
